@@ -29,7 +29,7 @@ class AuthorDaoIntegrationTest {
         assertThat(foundAuthOpt).isPresent();
 
         foundAuthOpt.ifPresent(author ->
-                System.out.printf("#### the found author name: %s ####%n",author.getLastName()));
+                System.out.printf("%n###### the found author name: %s ######%n%n",author.getLastName()));
     }
 
     @Test
@@ -38,6 +38,6 @@ class AuthorDaoIntegrationTest {
         assertThat(foundAuthOpt).isPresent();
 
         foundAuthOpt.ifPresent(author ->
-                System.out.printf("#### the found author name: %s ####%n",author.getLastName()));
+                System.out.printf("%n###### the found author name: %s ######%n%n",author.getLastName()));
     }
 }
