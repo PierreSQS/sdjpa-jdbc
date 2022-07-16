@@ -8,4 +8,7 @@ public interface AuthorDao {
     Optional<Author> findAuthorById(Long id);
 
     Optional<Author> findAuthorByName(String firstName, String lastName);
+
+    Author saveAuthor(Author author);
+
 }

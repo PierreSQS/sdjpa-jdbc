@@ -40,4 +40,13 @@ class AuthorDaoIntegrationTest {
         foundAuthOpt.ifPresent(author ->
                 System.out.printf("%n###### the found author name: %s ######%n%n",author.getLastName()));
     }
+
+    @Test
+    void saveAuthor() {
+        Author authorToSave = new Author(1L,"Pierrot","Mongonnam");
+        Author savedAuthor = authorDao.saveAuthor(authorToSave);
+        assertThat(savedAuthor.getLastName()).isEqualTo("Mongonnam");
+
+        System.out.printf("%n###### the ID of the saved Author: %s ######%n%n",savedAuthor.getId());
+    }
 }
