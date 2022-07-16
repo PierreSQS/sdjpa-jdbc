@@ -23,7 +23,7 @@ class MySQLIntegrationTest {
         long numberOfBooks = bookRepository.count();
         assertThat(numberOfBooks).isEqualTo(5);
 
-        System.out.printf("%n####### The number of records in the MySQL-DB: %d #######%n%n",numberOfBooks);
+        System.out.printf("%n####### The number of books in the MySQL-DB: %d #######%n%n",numberOfBooks);
 
     }
 }
