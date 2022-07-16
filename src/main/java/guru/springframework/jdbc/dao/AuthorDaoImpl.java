@@ -16,7 +16,7 @@ public class AuthorDaoImpl implements AuthorDao{
     }
 
     @Override
-    public Optional<Author> getById(Long id) {
+    public Optional<Author> findAuthorById(Long id) {
         try (
                 Connection connection = dataSource.getConnection();
                 PreparedStatement ps = connection.prepareStatement("SELECT * FROM AUTHOR where id = ?"))
@@ -38,4 +38,29 @@ public class AuthorDaoImpl implements AuthorDao{
         }
         return Optional.empty();
     }
+
+    @Override
+    public Optional<Author> findAuthorByName(String firstName, String lastName) {
+        try (
+                Connection connection = dataSource.getConnection();
+                PreparedStatement ps = connection.prepareStatement("SELECT * FROM AUTHOR where first_name = ? AND last_name = ?"))
+        {
+
+            ps.setString(1,firstName);
+            ps.setString(2,lastName);
+            ResultSet resultSet = ps.executeQuery();
+
+            if (resultSet.next()) {
+                Author foundAuthor = new Author();
+                foundAuthor.setFirstName(resultSet.getString("first_name"));
+                foundAuthor.setLastName(resultSet.getString("last_name"));
+
+                return Optional.of(foundAuthor);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
+    }
+
 }
