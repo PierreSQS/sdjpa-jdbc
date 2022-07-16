@@ -25,7 +25,10 @@ class AuthorDaoIntegrationTest {
 
     @Test
     void getById() {
-        Optional<Author> foundAuthOpt = authorDao.getById(1L);
+        Optional<Author> foundAuthOpt = authorDao.getById(2L);
         assertThat(foundAuthOpt).isPresent();
+
+        foundAuthOpt.ifPresent(author ->
+                System.out.printf("#### the found author name: %s ####%n",author.getLastName()));
     }
 }
